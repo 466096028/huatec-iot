@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huatec.iot.iotservice.mapper.ProductModuleAbilitysMapper">
+  <resultMap id="BaseResultMap" type="com.huatec.iot.common.entity.ProductModuleAbilitys">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="module_id" jdbcType="INTEGER" property="moduleId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="ability_name" jdbcType="VARCHAR" property="abilityName" />
+    <result column="ability_identifier" jdbcType="VARCHAR" property="abilityIdentifier" />
+    <result column="ability_type" jdbcType="TINYINT" property="abilityType" />
+    <result column="data_type" jdbcType="VARCHAR" property="dataType" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="is_required" jdbcType="TINYINT" property="isRequired" />
+    <result column="is_standard" jdbcType="TINYINT" property="isStandard" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="data_specs" jdbcType="LONGVARCHAR" property="dataSpecs" />
+  </resultMap>
+</mapper>

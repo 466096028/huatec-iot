@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huatec.iot.iotservice.mapper.ExamQuestionAttachmentMapper">
+  <resultMap id="BaseResultMap" type="com.huatec.iot.common.entity.ExamQuestionAttachment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="question_id" jdbcType="VARCHAR" property="questionId" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_user_code" jdbcType="VARCHAR" property="createUserCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_user_code" jdbcType="VARCHAR" property="updateUserCode" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_del" jdbcType="SMALLINT" property="isDel" />
+  </resultMap>
+
+
+  <select id="getAttachmentListByQuestionId" resultMap="BaseResultMap">
+    select * from iot_exam_question_attachment qa where qa.question_id = #{questionId} and qa.is_del = 0 order by qa.create_time asc
+  </select>
+
+</mapper>

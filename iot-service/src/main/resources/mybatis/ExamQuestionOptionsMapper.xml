@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huatec.iot.iotservice.mapper.ExamQuestionOptionsMapper">
+  <resultMap id="BaseResultMap" type="com.huatec.iot.common.entity.ExamQuestionOptions">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="question_id" jdbcType="VARCHAR" property="questionId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="is_correct" jdbcType="INTEGER" property="isCorrect" />
+    <result column="is_del" jdbcType="SMALLINT" property="isDel" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+  </resultMap>
+
+
+  <select id="getOptionsByQuestionId" resultMap="BaseResultMap">
+    select * from iot_exam_question_options qo where qo.question_id = #{questionId} and qo.is_del =  0 order by qo.sort asc
+  </select>
+
+
+</mapper>

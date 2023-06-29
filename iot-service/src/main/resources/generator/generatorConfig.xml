@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<properties resource="application-dev.yml"/>-->
+    <context id="huatec" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.huatec.iot.common.mapper.BaseMapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://172.16.150.6:8306/com_huatec_iot?useSSL=false&amp;serverTimezone=UTC&amp;useUnicode=true&amp;chara"
+                        userId="root"
+                        password="Huatec123">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.huatec.iot.common.entity" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.huatec.iot.iotservice.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <!--<table tableName="iot_categorys" domainObjectName="Categorys"/>-->
+        <!--<table tableName="iot_category_abilitys" domainObjectName="CategoryAbilitys"/>-->
+        <!--<table tableName="iot_devices" domainObjectName="Devices"/>-->
+        <table tableName="iot_product_module_abilitys" domainObjectName="ProductModuleAbilitys"/>
+        <table tableName="iot_product_modules" domainObjectName="ProductModules"/>
+        <!--<table tableName="iot_topics" domainObjectName="Topics"/>-->
+        <!--<table tableName="iot_products" domainObjectName="Products"/>-->
+        <!--<table tableName="iot_users" domainObjectName="Users"/>-->
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huatec.iot.iotservice.mapper.ExamPapersMapper">
+  <resultMap id="BaseResultMap" type="com.huatec.iot.common.entity.ExamPapers">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="is_correct" jdbcType="INTEGER" property="isCorrect" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_user_code" jdbcType="VARCHAR" property="createUserCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_user_code" jdbcType="VARCHAR" property="updateUserCode" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_del" jdbcType="SMALLINT" property="isDel" />
+  </resultMap>
+
+  <resultMap id="questionResultMap" type="com.huatec.iot.common.entity.ExamQuestion">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="question_id" jdbcType="VARCHAR" property="questionId" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_user_code" jdbcType="VARCHAR" property="createUserCode" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_user_code" jdbcType="VARCHAR" property="updateUserCode" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="is_del" jdbcType="SMALLINT" property="isDel" />
+  </resultMap>
+
+
+  <select id="getExamPapers" resultType="com.huatec.iot.common.entity.ExamPapers">
+    select * from iot_exam_papers ep where ep.id = #{id} and ep.is_del = 0
+  </select>
+
+  <select id="getExamQuestionListByPapersId" parameterType="java.util.Map" resultMap="questionResultMap">
+    select eq.* from iot_exam_question_paper eqp
+    LEFT JOIN iot_exam_question eq on eqp.question_id = eq.question_id
+    where eq.is_del = 0
+    and eqp.paper_id = #{id}
+    <if test="type != null and type != ''">
+      and eq.type = #{type}
+    </if>
+    ORDER BY eq.create_time asc
+  </select>
+
+
+</mapper>
